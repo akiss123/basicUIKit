@@ -1,0 +1,2 @@
+self.label.backgroundColor = 
+[UIColor colorWithRed:255.0/255 green:135.0/255 blue:108.0/255 alpha:1.0];//调色板取RGB值；.0/255。 来生成自定义颜色
