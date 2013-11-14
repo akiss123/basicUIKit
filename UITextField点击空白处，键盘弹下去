@@ -1,0 +1,22 @@
+#pragma mark 点击空白处，键盘弹下去
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if ([obj isKindOfClass:[UITextField class]]) {
+           [obj resignFirstResponder];
+        }
+    }];
+}
+- (BOOL)textFieldShouldReturn:(UITextField *)textField1
+{
+    
+    [textField1 resignFirstResponder];
+    
+    return YES;
+}
+- (BOOL)textFieldShouldClear:(UITextField *)textField1
+{
+    [textField1 resignFirstResponder];
+    textField1.text = @"";
+    return NO;
+}
