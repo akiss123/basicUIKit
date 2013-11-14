@@ -1,0 +1,9 @@
+-(UIImage *) imageFromView:(UIView *) _theView
+{
+    UIGraphicsBeginImageContextWithOptions(_theView.frame.size, NO, 0.0);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [_theView.layer renderInContext:context];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
