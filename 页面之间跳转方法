@@ -1,0 +1,20 @@
+- (void)dismissDetail
+{
+    //presentingViewController  模态父控制器
+    //presentedViewController 模态子控制器
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];  // 销毁 父 视图
+}
+
+
+- (void)pushToNext
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+
+    ViewController1 *controller1 = [[ViewController1 alloc]init];
+    controller1.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self presentViewController:controller1 animated:YES completion:nil];
+    [self.navigationController pushViewController:view animated:YES];
+//隐藏
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+
+}
