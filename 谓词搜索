@@ -1,0 +1,14 @@
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (tableView == self.tableView) {
+        return [UIFont familyNames].count; // 返回字体个数
+    }
+    else{                   //“谓词搜索”
+        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"SELF BEGINSWITH[cd] %@", searchBar.text];//字符串的前缀是否包含xx
+        //        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"SELF ENDSWITH[cd] %@", self.searchBar.text];//字符串的后缀是否包含xx
+        //        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"SELF CONTAINS[cd] %@", self.searchBar.text];//字符串是否包含xx
+        //        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"SELF LIKE[cd] '*PRO*'", self.searchBar.text];//字符串是否符合该格式，*代表任意数量的字符，上述字符代表PRO前面有一个任意字符，PRO后面有任意一个字符
+        searchArray=[[[UIFont familyNames] filteredArrayUsingPredicate:predicate] mutableCopy];
+    }
+    return searchArray.count;
+}
