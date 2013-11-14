@@ -1,0 +1,26 @@
+#pragma mark 限制用户输入
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (string.length == 0) {
+        return YES;  // 实现 回删 操作
+    }
+    NSString *str = [NSString stringWithFormat:@"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\n"];
+    if ([str rangeOfString:string].location == NSNotFound) {
+        return NO;
+    }
+    NSLog(@"%@",string);//输入一个字符，打印一个字符
+    return YES;// 是否允许，输入的字符，显示在界面上
+}
+
+// 控制  输入长度
+if (range.location>5) {
+        return NO; 
+    }
+    
+    // 方法2：
+    NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:str];
+    NSString *filteredString = [[string componentsSeparatedByCharactersInSet:set] componentsJoinedByString:@""];
+    if ([filteredString isEqualToString:string]) {
+        return NO;
+    }
+    return YES;
