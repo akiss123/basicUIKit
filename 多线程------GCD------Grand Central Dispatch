@@ -1,0 +1,22 @@
+// 1. 简单的后台执行
+    [self performSelectorInBackground:@selector(startProcessing) withObject:nil];
+    
+ // 2.NSThread后台执行
+    [NSThread detachNewThreadSelector:@selector(startProcessing) toTarget:self withObject:nil];
+    
+ // NSThread 方法2
+    NSThread *backgroundThread = [[NSThread alloc] initWithTarget:self selector:@selector(startProcessing) object:nil];
+    [backgroundThread start];
+    
+// 3.NSOperation / NSOperationQueue
+
+//4.NSInvocationOperation
+        NSInvocationOperation *opertaion = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(startProcessing) object:nil];
+
+GCD是一个替代诸如NSThread等技术的很高效和强大的技术。GCD完全可以处理诸如数据锁定和资源泄漏等复杂的异步编程问题。GCD的工作原理是让一个程序，根据可用的处理资源，安排他们在任何可用的处理器核心上平行排队执行特定的任务。这个任务可以是一个功能或者一个程序段。
+
+ //GCD
+//        dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_DATA_DESTRUCTOR_DEFAULT, 0);
+//        dispatch_async(globalQueue, ^{
+//            
+//        })
